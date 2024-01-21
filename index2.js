@@ -2,6 +2,7 @@ class CalorieTracker {
     constructor() {
         this.baseCalorieBurn = 1500;
         this.caloriesData = [];
+        this.reportArr = [];
     }
 
     addDayData(burnt, intake) {
@@ -16,7 +17,9 @@ class CalorieTracker {
         const { burnt, intake } = this.caloriesData[dayIndex - 1];
         const surplusDeficit = this.calculateSurplusDeficit(burnt, intake);
         const report = `Day ${dayIndex}: Surplus/Deficit: ${surplusDeficit > 0 ? surplusDeficit + " (Surplus)" : surplusDeficit + " (Deficit)"}`;
-        console.log(report);
+        // console.log(report);
+        this.reportArr.push({report});
+        console.log(this.reportArr[dayIndex-1].report);
     }
 
     generateWeeklySummary() {
